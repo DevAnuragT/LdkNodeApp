@@ -38,4 +38,8 @@ dependencies {
     
     // LDK Node dependency
     implementation("org.lightningdevkit:ldk-node-android:0.4.0")
+
+    // Coroutines & Lifecycle
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 }

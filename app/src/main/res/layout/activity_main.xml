@@ -1,22 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/nodeIdTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Initializing LDK Node..."
-        android:textSize="14sp"
-        android:padding="16dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Node Status -->
+        <TextView
+            android:id="@+id/nodeIdText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Node ID: Loading..."
+            android:textIsSelectable="true"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/nodeStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="○ Stopped"
+            android:textColor="#F44336"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Start Node" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Stop Node" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Funding Address -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Funding Address"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No address generated"
+            android:textIsSelectable="true"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnGenerateAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generate &amp; Copy"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Balances -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Balances"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/balanceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Spendable: 0 sats\nTotal: 0 sats"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnRefreshBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh Balance"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Connect Peer -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect Peer"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/peerInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="pubkey@host:port"
+            android:inputType="textUri"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnConnectPeer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnListPeers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List Connected Peers"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/peersListText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No peers"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Open Channel -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Channel"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/channelPubkeyInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Peer Pubkey"
+            android:inputType="text"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/channelHostInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Host:Port"
+            android:inputType="textUri"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/channelAmountInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount (sats)"
+            android:inputType="number"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/btnOpenChannel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Channel"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
